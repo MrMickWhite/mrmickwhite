@@ -1,7 +1,7 @@
 // mrmickwhite.com — raíz · utilidades comunes
 
 export const CONTACT = {
-  email: 'mrmickdesign@gmail.com',
+  email: 'info@mrmickwhite.com',
   github: 'https://github.com/MrMickWhite',
   githubOrg: 'MrMickWhite',
   instagram: 'https://instagram.com/_mr.mickwhite',
