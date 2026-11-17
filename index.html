@@ -1,360 +1,270 @@
 <!doctype html>
 <html lang="es">
-
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0e0d0b" />
-  <meta name="description"
-    content="Miguel Eduardo Montoya E. (mrmickwhite) — Estudiante de Ingeniería de Software y Tecnología Superior en Operación y Mantenimiento de Drones. Portafolio de proyectos web, de escritorio y automatización." />
-  <title>mrmickwhite · Miguel Eduardo Montoya E. — Software & UAV</title>
-  <link rel="icon" href="assets/icons/favicon.png" type="image/png" />
-  <link rel="icon" href="assets/icons/favicon.ico" sizes="any" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="css/app.css" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#0a0a0c"/>
+<title>Miguel Montoya — mrmickwhite · Software, Drones y Diseño</title>
+<meta name="description" content="Portafolio de Miguel Montoya (mrmickwhite): ingeniero de software, técnico de drones y diseñador. Sistemas web, apps de escritorio y productos de marca, desde Ecuador."/>
+<link rel="icon" href="assets/images/logo-mw-light.webp"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+::selection{background:var(--acc);color:#0a0a0c}
+:root{
+  --bg:#0a0a0c;--bg2:#101014;--ink:#f2f2ec;--mut:#8f8f86;--faint:#575752;
+  --acc:#c8ff4d;--acc2:#ff5e3a;--line:rgba(242,242,236,.09);
+  --disp:'Space Grotesk',sans-serif;--sans:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.mono{font-family:var(--mono)}
+/* cursor glow */
+#glow{position:fixed;width:460px;height:460px;border-radius:50%;pointer-events:none;z-index:0;
+  background:radial-gradient(circle,rgba(200,255,77,.10),transparent 65%);transform:translate(-50%,-50%);left:50%;top:30%;transition:opacity .4s;mix-blend-mode:screen}
+/* progress */
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--acc);z-index:60;transition:width .1s}
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:50;transition:.3s}
+header.s{background:rgba(10,10,12,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--disp);font-weight:700;font-size:18px;letter-spacing:-.3px}
+.brand img{width:36px;height:36px;border-radius:9px;object-fit:cover}
+.navl{display:flex;gap:30px;font-size:14px;font-family:var(--mono)}
+.navl a{color:var(--mut);position:relative}
+.navl a:hover{color:var(--ink)}
+.navl a:before{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--acc);transition:.25s}
+.navl a:hover:before{width:100%}
+@media(max-width:780px){.navl{display:none}}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:100px;font-weight:600;font-size:15px;border:1px solid var(--line);transition:.25s;cursor:pointer}
+.btn.fill{background:var(--acc);color:#0a0a0c;border-color:var(--acc)}
+.btn.fill:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(200,255,77,.3)}
+.btn.out:hover{border-color:var(--acc);color:var(--acc)}
+/* hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 0 70px;z-index:1}
+.hero .grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 70% at 50% 40%,#000,transparent 78%);opacity:.5;z-index:-1}
+.hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:50px;align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+.tagline{font-family:var(--mono);color:var(--acc);font-size:14px;letter-spacing:1px;display:flex;align-items:center;gap:10px}
+.tagline .dot{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 12px var(--acc);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+h1.name{font-family:var(--disp);font-weight:700;font-size:clamp(46px,9vw,104px);line-height:.92;letter-spacing:-3px;margin:22px 0 0}
+h1.name .l2{color:transparent;-webkit-text-stroke:1.5px var(--ink)}
+.roles{margin-top:22px;font-family:var(--disp);font-size:clamp(20px,3.2vw,30px);font-weight:500;color:var(--mut);height:1.3em;overflow:hidden}
+.roles b{color:var(--ink)}
+.roles .rot{color:var(--acc);display:inline-block}
+.lead{margin-top:24px;max-width:500px;color:var(--mut);font-size:18px}
+.lead b{color:var(--ink);font-weight:600}
+.hero-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.socials{margin-top:30px;display:flex;gap:10px;flex-wrap:wrap;font-family:var(--mono);font-size:12.5px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);padding:9px 14px;border-radius:100px;color:var(--mut);transition:.2s}
+.chip:hover{border-color:var(--acc);color:var(--ink);transform:translateY(-2px)}
+/* portrait */
+.portrait{position:relative;justify-self:center}
+.portrait .frame{width:min(320px,80vw);aspect-ratio:4/5;border-radius:20px;overflow:hidden;border:1px solid var(--line);position:relative;filter:grayscale(.2) contrast(1.05)}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.portrait .frame:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,10,12,.5));mix-blend-mode:multiply}
+.portrait .ring{position:absolute;inset:-14px;border:1px solid var(--acc);border-radius:26px;opacity:.35}
+.portrait .tagpill{position:absolute;left:-14px;bottom:26px;background:var(--acc);color:#0a0a0c;font-family:var(--mono);font-size:12px;font-weight:600;padding:8px 14px;border-radius:100px;box-shadow:0 10px 26px rgba(0,0,0,.4)}
+.scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;color:var(--faint);display:flex;flex-direction:column;align-items:center;gap:8px}
+.scrollcue .bar{width:1px;height:40px;background:linear-gradient(var(--acc),transparent);animation:drop 1.8s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}50.1%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+/* marquee */
+.marq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;overflow:hidden;background:var(--bg2);position:relative;z-index:1}
+.marq .track{display:flex;gap:40px;width:max-content;animation:scroll 26s linear infinite;font-family:var(--disp);font-size:24px;font-weight:600;color:var(--faint);white-space:nowrap}
+.marq .track span{display:flex;align-items:center;gap:40px}
+.marq .track em{color:var(--acc);font-style:normal}
+@keyframes scroll{to{transform:translateX(-50%)}}
+/* sections */
+section{position:relative;z-index:1}
+.sec{padding:110px 0}
+.sec-label{font-family:var(--mono);color:var(--acc);font-size:13px;letter-spacing:1px;display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.sec-label:before{content:"";width:28px;height:1px;background:var(--acc)}
+.sec h2{font-family:var(--disp);font-weight:700;font-size:clamp(30px,5vw,52px);letter-spacing:-1.5px;line-height:1.02}
+.sec .sub{color:var(--mut);max-width:560px;margin-top:16px;font-size:17px}
+/* pilares */
+.pillars{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+@media(max-width:820px){.pillars{grid-template-columns:1fr}}
+.pil{padding:38px 34px;border-right:1px solid var(--line);transition:.3s;position:relative}
+.pillars .pil:last-child{border-right:0}
+@media(max-width:820px){.pil{border-right:0;border-bottom:1px solid var(--line)}}
+.pil:hover{background:var(--bg2)}
+.pil .n{font-family:var(--mono);color:var(--faint);font-size:13px}
+.pil h3{font-family:var(--disp);font-size:24px;font-weight:600;margin:18px 0 10px}
+.pil:hover h3{color:var(--acc)}
+.pil p{color:var(--mut);font-size:14.5px}
+/* proyectos — lista editorial */
+.plist{margin-top:50px;border-top:1px solid var(--line)}
+.prow{display:grid;grid-template-columns:70px 1fr auto;align-items:center;gap:24px;padding:30px 10px;border-bottom:1px solid var(--line);transition:.3s;cursor:pointer}
+.prow:hover{padding-left:28px;background:linear-gradient(90deg,rgba(200,255,77,.05),transparent)}
+.prow .num{font-family:var(--mono);color:var(--faint);font-size:14px}
+.prow:hover .num{color:var(--acc)}
+.prow .mid{display:flex;flex-direction:column;gap:5px}
+.prow .pn{font-family:var(--disp);font-size:clamp(22px,3.4vw,34px);font-weight:600;letter-spacing:-.6px;line-height:1;transition:.3s}
+.prow:hover .pn{color:var(--acc)}
+.prow .pd{color:var(--mut);font-size:14.5px;max-width:560px}
+.prow .right{display:flex;align-items:center;gap:18px}
+.prow .ptag{font-family:var(--mono);font-size:12px;color:var(--faint);border:1px solid var(--line);padding:5px 11px;border-radius:100px;white-space:nowrap}
+.prow .arrow{font-size:26px;color:var(--faint);transition:.3s}
+.prow:hover .arrow{color:var(--acc);transform:translate(4px,-4px)}
+@media(max-width:680px){.prow{grid-template-columns:40px 1fr;gap:14px}.prow .right{grid-column:2;justify-content:flex-start}.prow .pd{display:none}}
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:820px){.about{grid-template-columns:1fr;gap:34px}}
+.about .ph{border-radius:18px;overflow:hidden;border:1px solid var(--line);filter:grayscale(.3)}
+.about .ph img{width:100%;display:block}
+.about p{color:var(--mut);font-size:17px;margin-bottom:16px}
+.about p b{color:var(--ink)}
+.facts{margin-top:26px;display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+.facts .f{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.facts .f span{color:var(--faint);font-family:var(--mono);font-size:12.5px}
+.facts .f b{font-weight:600}
+/* contacto */
+.cta-big{text-align:center;padding:120px 0}
+.cta-big h2{font-family:var(--disp);font-weight:700;font-size:clamp(38px,8vw,88px);letter-spacing:-2.5px;line-height:.95}
+.cta-big h2 em{font-style:normal;color:var(--acc)}
+.cta-big .ways{margin-top:40px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+footer{border-top:1px solid var(--line);padding:36px 0;position:relative;z-index:1}
+.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-family:var(--mono);font-size:12.5px;color:var(--faint)}
+.foot a:hover{color:var(--acc)}
+.reveal{opacity:0;transform:translateY(26px);transition:.7s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+</style>
 </head>
-
 <body>
+<div id="glow"></div>
+<div id="prog"></div>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#inicio" aria-label="Ir al inicio">
-        <img class="brand-mark" src="assets/images/logo-mw-light.webp" alt="mrmickwhite" style="object-fit:cover;padding:0"/>
-        <span>
-          <strong>mrmickwhite</strong>
-          <small>~/software</small>
-        </span>
-      </a>
-      <nav class="main-nav" data-main-nav>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#marcas">Sitios propios</a>
-        <a href="#stack">Stack</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
-      <div class="header-actions">
-        <a class="btn outline sm" data-github-link href="#" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn outline sm" href="https://www.linkedin.com/in/miguel-montoya-e-411747211" target="_blank"
-          rel="noopener">LinkedIn</a>
-        <button class="nav-toggle" data-nav-toggle aria-label="Abrir menú">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </header>
+<header id="hd"><div class="wrap"><nav>
+<a class="brand" href="#inicio"><img src="assets/images/logo-mw-light.webp" alt="mrmickwhite"/> mrmickwhite</a>
+<div class="navl">
+<a href="#hago">Qué hago</a><a href="#proyectos">Proyectos</a><a href="#sobre">Sobre mí</a><a href="#contacto">Contacto</a>
+</div>
+<a class="btn fill" href="#contacto" style="padding:11px 20px;font-size:14px">Hablemos</a>
+</nav></div></header>
 
-  <main>
-    <!-- ===================== HERO ===================== -->
-    <section class="hero" id="inicio">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow">whoami</span>
-          <h1>Miguel Eduardo<br />Montoya E. <span class="accent">/ mrmickwhite</span></h1>
-          <p class="lead">
-            Estudiante de Ingeniería de Software y de Tecnología Superior en Operación y Mantenimiento de Drones.
-            Construyo sitios web, sistemas de escritorio y automatizaciones a medida — desde landing pages hasta
-            apps con base de datos, reportes en PDF e integración con hojas de cálculo.
-          </p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#proyectos">Ver proyectos</a>
-            <a class="btn outline" href="#contacto">Contactarme</a>
-          </div>
-          <div class="hero-socials">
-            <a class="social-chip" data-github-link href="#" target="_blank" rel="noopener">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.071 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z" />
-              </svg>
-              github.com/MrMickWhite
-            </a>
-            <a class="social-chip" data-instagram-link href="#" target="_blank" rel="noopener">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="3" width="18" height="18" rx="5" />
-                <circle cx="12" cy="12" r="3.6" />
-                <circle cx="17.2" cy="6.8" r="1" />
-              </svg>
-              _mr.mickwhite
-            </a>
-            <a class="social-chip" href="https://www.linkedin.com/in/miguel-montoya-e-411747211" target="_blank"
-              rel="noopener">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z" />
-              </svg>
-              LinkedIn
-            </a>
-            <a class="social-chip" data-email-link href="#">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="5" width="18" height="14" rx="2" />
-                <path d="m4 6 8 7 8-7" />
-              </svg>
-              info@mrmickwhite.com
-            </a>
-          </div>
-        </div>
+<main>
+<section class="hero" id="inicio">
+<div class="grid-bg"></div>
+<div class="wrap hero-grid">
+<div>
+<div class="tagline"><span class="dot"></span> Ecuador · disponible para proyectos</div>
+<h1 class="name">Miguel<br/><span class="l2">Montoya</span></h1>
+<div class="roles">Hago <span class="rot" id="rot">software</span></div>
+<p class="lead">Ingeniero de software, técnico de drones y diseñador. Construyo cosas que <b>la gente usa de verdad</b> — del sistema al producto, de la idea al código. Y cuando un dron no vuela, también lo reparo.</p>
+<div class="hero-cta">
+<a class="btn fill" href="#proyectos">Ver proyectos</a>
+<a class="btn out" href="#contacto">Hablemos de tu idea</a>
+</div>
+<div class="socials">
+<a class="chip" href="https://github.com/MrMickWhite" target="_blank" rel="noopener">GitHub ↗</a>
+<a class="chip" href="https://instagram.com/_mr.mickwhite" target="_blank" rel="noopener">Instagram ↗</a>
+<a class="chip" href="https://www.linkedin.com/in/miguel-montoya-e-411747211" target="_blank" rel="noopener">LinkedIn ↗</a>
+</div>
+</div>
+<div class="portrait">
+<span class="ring"></span>
+<div class="frame"><img src="assets/images/miguel-portrait.webp" alt="Miguel Montoya"/></div>
+<span class="tagpill">● 8 proyectos en vivo</span>
+</div>
+</div>
+<div class="scrollcue"><div class="bar"></div>scroll</div>
+</section>
 
-        <div class="hero-visual">
-          <div class="portrait-frame">
-            <img src="assets/images/miguel-portrait.webp" alt="Miguel Eduardo Montoya E." width="900" height="1125" />
-            <div class="portrait-badge mono">
-              <span class="blip"></span> disponible para proyectos
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="scroll-cue"><span>scroll</span>
-        <div class="line"></div>
-      </div>
-    </section>
+<div class="marq"><div class="track" id="mtrack">
+<span><em>Software</em> · Sistemas web · <em>Apps de escritorio</em> · Python · Tauri · <em>Drones (UAV)</em> · Diseño · Sublimación · <em>Automatización</em> · Reportes PDF · <em>Google Apps Script</em> · </span>
+<span><em>Software</em> · Sistemas web · <em>Apps de escritorio</em> · Python · Tauri · <em>Drones (UAV)</em> · Diseño · Sublimación · <em>Automatización</em> · Reportes PDF · <em>Google Apps Script</em> · </span>
+</div></div>
 
-    <!-- ===================== STACK ===================== -->
-    <section class="section" id="stack">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">cat stack.md</span>
-          <h2>Con qué trabajo</h2>
-          <p>Sin atarme a un solo lenguaje: elijo la herramienta según lo que el proyecto necesite resolver.</p>
-        </div>
-        <div class="stack-grid">
-          <article class="card stack-card reveal">
-            <div class="stack-icon">&lt;/&gt;</div>
-            <h3>Frontend web</h3>
-            <p>HTML, CSS y JavaScript modular, sin frameworks pesados cuando no hacen falta. Sitios rápidos y fáciles de
-              mantener.</p>
-          </article>
-          <article class="card stack-card reveal">
-            <div class="stack-icon">PY</div>
-            <h3>Python de escritorio</h3>
-            <p>Aplicaciones con CustomTkinter, base de datos SQLite, reportes PDF con ReportLab e instaladores para
-              Windows.</p>
-          </article>
-          <article class="card stack-card reveal">
-            <div class="stack-icon">⚙</div>
-            <h3>Automatización</h3>
-            <p>Integraciones con Google Sheets y Apps Script para que un sitio o sistema se actualice solo, sin tocar
-              código.</p>
-          </article>
-          <article class="card stack-card reveal">
-            <div class="stack-icon">▤</div>
-            <h3>Datos y reportes</h3>
-            <p>Modelos de datos, cálculo de intereses/mora, reportes ejecutivos en PDF con apariencia profesional.</p>
-          </article>
-        </div>
+<section class="sec" id="hago"><div class="wrap">
+<div class="reveal"><div class="sec-label">qué hago</div>
+<h2>Tres mundos,<br/>una sola forma de trabajar.</h2>
+<p class="sub">Elijo la herramienta según el problema, no al revés. Lo que no cambia: termino lo que empiezo y lo dejo funcionando.</p></div>
+<div class="pillars reveal">
+<div class="pil"><div class="n">01 / dev</div><h3>Software</h3><p>Sistemas web y aplicaciones de escritorio: bases de datos, reportes en PDF, facturación, instaladores para Windows. Del back al front.</p></div>
+<div class="pil"><div class="n">02 / uav</div><h3>Drones</h3><p>Técnico en operación y mantenimiento de drones: diagnóstico, reparación de hardware y puesta a punto. La teoría aplicada al aire.</p></div>
+<div class="pil"><div class="n">03 / design</div><h3>Diseño</h3><p>Identidad, publicidad y productos personalizados. Logos, flyers y sublimación — y las webs de marca que los acompañan.</p></div>
+</div>
+</div></section>
 
-        <div class="terminal reveal" aria-hidden="true" style="margin-top:34px;">
-          <div class="terminal-bar">
-            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-            <span class="path">miguel@mrmickwhite — zsh</span>
-          </div>
-          <div class="terminal-body">
-            <div class="terminal-line"><span class="prompt">miguel@mrmickwhite</span>:<span
-                class="prompt-path">~</span>$ whoami</div>
-            <div class="terminal-line">Estudiante de Ingeniería de Software</div>
-            <div class="terminal-line">Estudiante de Tec. Sup. en Drones (UAV)</div>
-            <div class="terminal-line">&nbsp;</div>
-            <div class="terminal-line"><span class="prompt">miguel@mrmickwhite</span>:<span
-                class="prompt-path">~</span>$ ls -1 stack/</div>
-            <div class="terminal-line">HTML · CSS · JavaScript<br />Python (CustomTkinter, SQLite,
-              ReportLab)<br />Google Apps Script · automatización</div>
-            <div class="terminal-line">&nbsp;</div>
-            <div class="terminal-line"><span class="prompt">miguel@mrmickwhite</span>:<span
-                class="prompt-path">~</span>$ cat sitios.txt</div>
-            <div class="terminal-line"><span class="str">labs.mrmickwhite.com</span> <span class="comment">#
-                esencias, jabones y cremas</span></div>
-            <div class="terminal-line"><span class="str">fly.mrmickwhite.com</span> &nbsp;<span class="comment">#
-                servicio técnico de drones</span></div>
-            <div class="terminal-line"><span class="str">esports.mrmickwhite.com</span> <span class="comment">#
-                torneos virtuales de e-sports</span></div>
-            <div class="terminal-line">&nbsp;</div>
-            <div class="terminal-line"><span class="prompt">miguel@mrmickwhite</span>:<span
-                class="prompt-path">~</span>$ <span class="cursor"></span></div>
-          </div>
-        </div>
-      </div>
-    </section>
+<section class="sec" id="proyectos"><div class="wrap">
+<div class="reveal"><div class="sec-label">proyectos · 01—08</div>
+<h2>Cosas que he construido.</h2>
+<p class="sub">Cada una nació de una necesidad real y terminó en algo que funciona. Pasa el cursor y entra.</p></div>
+<div class="plist reveal" id="plist"></div>
+</div></section>
 
-    <!-- ===================== PROYECTOS (GitHub en vivo) ===================== -->
-    <section class="section" id="proyectos">
-      <div class="container">
-        <div class="project-toolbar reveal">
-          <div class="section-head" style="margin-bottom:0;">
-            <span class="eyebrow">git log --all</span>
-            <h2>Proyectos</h2>
-            <p>Esta lista se conecta en vivo con mi organización de GitHub. Cada repositorio nuevo que publique aparece
-              aquí automáticamente.</p>
-          </div>
-          <span class="project-status mono" data-project-status><span class="blip"></span> cargando…</span>
-        </div>
-        <div class="project-grid" data-project-grid></div>
-        <p class="project-footnote">¿Quieres ver el código completo? Visita <a data-github-link href="#" target="_blank"
-            rel="noopener">github.com/MrMickWhite</a>.</p>
-      </div>
-    </section>
+<section class="sec" id="sobre"><div class="wrap">
+<div class="reveal"><div class="sec-label">sobre mí</div></div>
+<div class="about reveal">
+<div class="ph"><img src="assets/images/miguel-portrait.webp" alt="Miguel Montoya"/></div>
+<div>
+<p>Soy <b>Miguel Montoya</b>. Estudio Ingeniería de Software en la Universidad Estatal Península de Santa Elena y, en paralelo, Tecnología Superior en Operación y Mantenimiento de Drones.</p>
+<p>Bajo la marca <b>MrMickWhite</b> reúno todo lo que hago: sistemas para empresas, apps para comunidades, un servicio técnico de drones y una línea de diseño. Variado a propósito — porque cada proyecto salió de algo concreto que había que resolver.</p>
+<p>Si tienes una idea que necesita volverse software (o un dron que necesita volver a volar), hablemos.</p>
+<div class="facts">
+<div class="f"><span>Formación</span><b>Ing. de Software · Tec. Sup. en Drones</b></div>
+<div class="f"><span>Base</span><b>Santa Elena, Ecuador</b></div>
+<div class="f"><span>Código</span><b>github.com/MrMickWhite</b></div>
+<div class="f"><span>Estado</span><b>Abierto a proyectos</b></div>
+</div>
+</div>
+</div>
+</div></section>
 
-    <!-- ===================== SITIOS PROPIOS (Labs / Fly) ===================== -->
-    <section class="section" id="marcas">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="eyebrow">cd ~/marcas</span>
-          <h2>Sitios propios en producción</h2>
-          <p>Tres marcas construidas y publicadas de punta a punta: diseño, desarrollo y despliegue.</p>
-        </div>
-        <div class="brandsite-grid">
-          <article class="card brandsite-card labs reveal">
-            <div class="domain mono">labs.mrmickwhite.com</div>
-            <h3>mrmickwhite Labs</h3>
-            <p>Marca de esencias, jabones y cremas botánicas. Catálogo por familias aromáticas, fichas individuales de
-              producto y pedido directo por WhatsApp.</p>
-            <div class="project-actions">
-              <a class="btn primary sm" href="https://labs.mrmickwhite.com" target="_blank" rel="noopener">Ver
-                sitio</a>
-            </div>
-          </article>
-          <article class="card brandsite-card fly reveal">
-            <div class="domain mono">fly.mrmickwhite.com</div>
-            <h3>Mr.Mick Fly</h3>
-            <p>Servicio técnico de drones en Salinas, Santa Elena: mantenimiento, diagnóstico, limpieza profunda y
-              reparación de hardware.</p>
-            <div class="project-actions">
-              <a class="btn primary sm" href="https://fly.mrmickwhite.com" target="_blank" rel="noopener">Ver
-                sitio</a>
-            </div>
-          </article>
-          <article class="card brandsite-card esports reveal">
-            <div class="domain mono">esports.mrmickwhite.com</div>
-            <h3>Software E-Sports</h3>
-            <p>Torneo virtual de e-sports (Fortnite, Valorant, League of Legends): inscripción de equipos, reglamento,
-              premios, resultados en vivo y comunidad en Discord/WhatsApp.</p>
-            <div class="project-actions">
-              <a class="btn primary sm" href="https://esports.mrmickwhite.com" target="_blank" rel="noopener">Ver
-                sitio</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+<section id="contacto"><div class="wrap cta-big reveal">
+<div class="sec-label" style="justify-content:center">contacto</div>
+<h2>¿Lo <em>construimos</em>?</h2>
+<div class="ways">
+<a class="btn fill" href="https://wa.me/593985210501">WhatsApp +593 98 521 0501</a>
+<a class="btn out" href="mailto:info@mrmickwhite.com">info@mrmickwhite.com</a>
+</div>
+</div></section>
+</main>
 
-    <!-- ===================== SOBRE MÍ + CONTACTO ===================== -->
-    <section class="section" id="contacto">
-      <div class="container about-grid">
-        <article class="card about-card reveal">
-          <span class="eyebrow">cat about.md</span>
-          <h2>Sobre este sitio</h2>
-          <p>
-            mrmickwhite.com es mi punto de partida en internet: desde aquí se organizan los sitios de marca que voy
-            creando
-            (Labs, Fly y E-Sports) y se listan, en vivo, los repositorios que voy publicando en GitHub.
-          </p>
-          <p>
-            Estudio Ingeniería de Software en la Universidad Estatal Península de Santa Elena y, en paralelo, Tecnología
-            Superior en Operación y Mantenimiento de Drones en Paradox. Aplico lo que aprendo en proyectos reales:
-            sitios de
-            marca, automatizaciones y sistemas a medida. Si tienes una idea que necesita convertirse en software,
-            hablemos.
-          </p>
-          <div class="about-list">
-            <div class="row"><span>Formación</span><strong>Ing. de Software · Tec. Sup. en Drones</strong></div>
-            <div class="row"><span>GitHub</span><strong>github.com/MrMickWhite</strong></div>
-            <div class="row"><span>Disponibilidad</span><strong>Proyectos web y de escritorio a medida</strong></div>
-          </div>
-        </article>
+<footer><div class="wrap foot">
+<span>© <span id="y"></span> MrMickWhite · Miguel Montoya · Ecuador</span>
+<span>Todos los derechos reservados</span>
+</div></footer>
 
-        <article class="card contact-card reveal">
-          <span class="eyebrow">contacto</span>
-          <h3 style="margin-bottom:6px;">Hablemos de tu proyecto</h3>
-          <a class="contact-link" data-email-link href="#">
-            <span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <rect x="3" y="5" width="18" height="14" rx="2" />
-                <path d="m4 6 8 7 8-7" />
-              </svg></span>
-            <span><strong>Correo</strong><span>info@mrmickwhite.com</span></span>
-          </a>
-          <a class="contact-link" data-github-link href="#" target="_blank" rel="noopener">
-            <span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.071 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z" />
-              </svg></span>
-            <span><strong>GitHub</strong><span>github.com/MrMickWhite</span></span>
-          </a>
-          <a class="contact-link" href="https://www.linkedin.com/in/miguel-montoya-e-411747211" target="_blank"
-            rel="noopener">
-            <span class="icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z" />
-              </svg>
-            </span>
-            <span><strong>LinkedIn</strong><span>miguel-montoya-e</span></span>
-          </a>
-          <a class="contact-link" data-instagram-link href="#" target="_blank" rel="noopener">
-            <span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <rect x="3" y="3" width="18" height="18" rx="5" />
-                <circle cx="12" cy="12" r="3.6" />
-                <circle cx="17.2" cy="6.8" r="1" />
-              </svg></span>
-            <span><strong>Instagram</strong><span>@_mr.mickwhite</span></span>
-          </a>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <img class="brand-mark" src="assets/images/logo-mw-light.webp" alt="mrmickwhite" style="object-fit:cover;padding:0"/>
-          <div>
-            <strong class="mono" style="display:block; color:var(--ink);">mrmickwhite</strong>
-            <div class="footer-meta">Miguel Eduardo Montoya E.</div>
-          </div>
-        </div>
-        <div class="footer-meta">
-          info@mrmickwhite.com<br />
-          github.com/MrMickWhite · instagram @_mr.mickwhite · LinkedIn miguel-montoya-e
-        </div>
-        <div class="social-row">
-          <a data-email-link href="#" aria-label="Correo">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="5" width="18" height="14" rx="2" />
-              <path d="m4 6 8 7 8-7" />
-            </svg>
-          </a>
-          <a data-github-link href="#" target="_blank" rel="noopener" aria-label="GitHub">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.071 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z" />
-            </svg>
-          </a>
-          <a data-instagram-link href="#" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="3" width="18" height="18" rx="5" />
-              <circle cx="12" cy="12" r="3.6" />
-              <circle cx="17.2" cy="6.8" r="1" />
-            </svg>
-          </a>
-          <a href="https://www.linkedin.com/in/miguel-montoya-e-411747211" target="_blank" rel="noopener"
-            aria-label="LinkedIn">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© <span data-year></span> mrmickwhite</span>
-        <span>mrmickwhite.com</span>
-      </div>
-    </div>
-  </footer>
-
-  <script type="module" src="js/main.js"></script>
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+// header scroll + progress
+var hd=document.getElementById('hd'),prog=document.getElementById('prog');
+addEventListener('scroll',function(){
+  hd.classList.toggle('s',scrollY>20);
+  var h=document.documentElement;prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+},{passive:true});
+// cursor glow
+var glow=document.getElementById('glow');
+addEventListener('mousemove',function(e){glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';});
+// role rotator
+var roles=['software','sistemas','apps','que vuela','diseño','que la gente usa'],i=0,rot=document.getElementById('rot');
+setInterval(function(){i=(i+1)%roles.length;rot.style.opacity=0;setTimeout(function(){rot.textContent=roles[i];rot.style.opacity=1;},200);},2200);
+rot.style.transition='opacity .2s';
+// proyectos
+var P=[
+ ['MRExtin','Gestión y control de extintores: inspecciones, vencimientos, QR y reportes.','Sistema web','https://extin.mrmickwhite.com'],
+ ['MRFIRM','Crear, firmar, validar y gestionar documentos digitales.','App · Windows','https://firma.mrmickwhite.com'],
+ ['MR TAXI','Pide tu taxi por WhatsApp en la Península de Santa Elena.','Web + backend','https://taxi.mrmickwhite.com'],
+ ['MR.MICK FLY','Servicio técnico de drones: diagnóstico, mantenimiento y reparación.','Servicio','https://fly.mrmickwhite.com'],
+ ['Banquito','Caja de ahorro y crédito comunitario, sin internet, con reportes PDF.','App · Windows','https://banquito.mrmickwhite.com'],
+ ['Software E-Sports','Torneo de videojuegos con panel de staff y puntajes en vivo.','Evento · Web','https://esports.mrmickwhite.com'],
+ ['MrMickDesign','Diseño gráfico, desarrollo web/apps, sublimación y personalizados.','Diseño','https://design.mrmickwhite.com'],
+ ['MrMickWhite Labs','Esencias, jabones y cremas botánicas. Catálogo y pedido.','Productos','https://labs.mrmickwhite.com'],
+];
+document.getElementById('plist').innerHTML=P.map(function(p,n){
+ return '<a class="prow" href="'+p[3]+'" target="_blank" rel="noopener">'+
+ '<span class="num">0'+(n+1)+'</span>'+
+ '<span class="mid"><span class="pn">'+p[0]+'</span><span class="pd">'+p[1]+'</span></span>'+
+ '<span class="right"><span class="ptag">'+p[2]+'</span><span class="arrow">↗</span></span></a>';
+}).join('');
+// reveal
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+</script>
 </body>
-
 </html>
